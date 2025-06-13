@@ -15,7 +15,7 @@ def start_main_app():
     splash_x = (screen_width // 2) - (window_width // 2)
     splash_y = (screen_height // 2) - (window_height // 2)
 
-    root.geometry(f"{window_width}splash_x{window_height}+{splash_x}+{splash_y}")
+    root.geometry(f"{window_width}x{window_height}+{splash_x}+{splash_y}")
 
     chat_log = tk.Text(root, state=tk.DISABLED, wrap="word")
     chat_log.pack(padx=10, pady=10, expand=True, fill='both')
@@ -23,7 +23,7 @@ def start_main_app():
     entry_frame = tk.Frame(root)
     entry_frame.pack(pady=5)
 
-    entry = tk.Entry(entry_frame, splash_width=50)
+    entry = tk.Entry(entry_frame, width=50)
     entry.pack(side=tk.LEFT, padx=(0, 10))
 
     send_button = tk.Button(entry_frame, text="Trimite", command=lambda: send_message(entry, chat_log))
