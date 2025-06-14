@@ -23,7 +23,10 @@ def start_main_app():
 
     chat_log = tk.Text(root, state=tk.DISABLED, wrap="word")
     chat_log.pack(padx=10, pady=10, expand=True, fill='both')
-
+    # TODO: load data.json
+    with open("data.json", "r") as f:
+        data = f.read()
+        chat_log.insert(tk.END, data)
     entry_frame = tk.Frame(root)
     entry_frame.pack(pady=5)
 
@@ -55,6 +58,9 @@ def start_main_app():
     clear_button = tk.Button(entry_frame, text="Clear Chat", command=lambda: clear_chat(chat_log))
     clear_button.pack(side=tk.LEFT, padx=(10, 0))
 
+    #TODO: alerta daca chatul deja e gol
+    
+    
     root.bind('<Return>', lambda event=None: send_message(entry, chat_log))
 
     root.mainloop()
@@ -91,10 +97,12 @@ def send_message(entry, chat_log):
 
     chat_log.config(state=tk.NORMAL)
     chat_log.insert(tk.END, f"You: {user_message}\n")
-
+    
     bot_response = get_response(user_message)
     chat_log.insert(tk.END, f"Bot: {bot_response}\n\n")
-
+    
+    # TODO: save user_message to data.json in a json format
+    
     chat_log.config(state=tk.DISABLED)
     entry.delete(0, tk.END)
     
@@ -102,6 +110,11 @@ def clear_chat(chat_log):
     chat_log.config(state=tk.NORMAL)
     chat_log.delete('1.0', tk.END)
     chat_log.config(state=tk.DISABLED)
+
+    # TODO: clear the data.json file
+    # clear data.json
+    # with open("data.json", "w") as f:
+    #     f.write("{}")
 
 def show_splash_then_main():
     splash = tk.Tk()

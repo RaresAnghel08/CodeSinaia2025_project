@@ -1,0 +1,12 @@
+{
+  "chat": [
+    {
+      "user": "Hello",
+      "bot": "Hi there! How can I assist you today?"
+    },
+    {
+      "user": "What is the capital of France?",
+      "bot": "The capital of France is Paris."
+    }
+  ]
+}
